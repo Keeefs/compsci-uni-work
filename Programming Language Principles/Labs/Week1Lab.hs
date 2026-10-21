@@ -1,4 +1,5 @@
 module Week1Lab where 
+    import Data.Char (isLower, toUpper)
     -- n = a `div` length xs
     --     where 
     --         a = 10
@@ -39,3 +40,15 @@ module Week1Lab where
             childAge = 12
             elderlyAge = 65
             defaultPrice = 20.00 
+
+    rotate :: Int -> [a] -> [a]
+    rotate 0 xs = xs 
+    rotate n (x:xs) = rotate (n - 1) xs ++ [x]
+
+    equalPairs :: Eq a => a -> a -> a -> Int
+    equalPairs x y z = (if x == y then 1 else 0) + (if x == z then 1 else 0) + (if y == z then 1 else 0)
+
+    capitalizeStart :: String -> String
+    capitalizeStart (x:xs)
+        | isLower x = toUpper x : xs
+        | otherwise = x:xs
