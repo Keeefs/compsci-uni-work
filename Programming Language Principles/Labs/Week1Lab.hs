@@ -52,3 +52,18 @@ module Week1Lab where
     capitalizeStart (x:xs)
         | isLower x = toUpper x : xs
         | otherwise = x:xs
+
+    numberOfRoots :: (Ord a, Num a) => a -> a -> a -> Int
+    numberOfRoots x y z 
+        | discriminant > 0 = 2
+        | discriminant == 0 = 1
+        | otherwise = 0
+        where 
+            discriminant = y^2 - (4*x*z)
+
+    luhnDouble :: Int -> Int
+    luhnDouble num = let x = num*2 
+        in if x > 9 then x - 9 else x 
+
+    luhn :: Int -> Int -> Int -> Int -> Bool
+    luhn a b c d = if ((luhnDouble a) + b + (luhnDouble c) + d) `mod` 10 == 0 then True else False
