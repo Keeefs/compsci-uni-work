@@ -125,4 +125,6 @@ composeAll  :: [a -> a] -> a -> a
 composeAll fs x = (foldr (\f acc -> (f . acc)) id fs) x
 
 pipeline :: [a -> a] -> [a] -> [a]
-pipeline fs xs = map composeAll xs 
+pipeline fs xs = map (composeAll fs) xs 
+
+exampleq8 = map (\x -> (x*2)+1) [1,2,3]
